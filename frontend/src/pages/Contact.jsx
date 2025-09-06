@@ -12,7 +12,7 @@ function Contact() {
         {/* Social Links */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           <a
-            href="https://www.linkedin.com/in/your-profile"
+            href="https://www.linkedin.com/in/kamal-barman-75934530a/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center space-x-3 p-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
@@ -22,7 +22,7 @@ function Contact() {
           </a>
 
           <a
-            href="https://wa.me/59898989856"
+            href="https://wa.me/9002800162"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center space-x-3 p-3 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition"
@@ -50,11 +50,11 @@ function Contact() {
           </a>
 
           <a
-            href="tel:+919565686568"
+            href="tel:+919002800162"
             className="flex items-center justify-center space-x-3 p-3 bg-gray-700 text-white rounded-lg shadow hover:bg-gray-800 transition md:col-span-2"
           >
             <FaPhone size={22} />
-            <span>+91 46796464679</span>
+            <span>+91 9002800162</span>
           </a>
         </div>
 

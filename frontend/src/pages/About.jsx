@@ -1,4 +1,5 @@
 import React from "react";
+import { Phone, Mail, Linkedin } from "lucide-react"; // ✅ Import icons
 
 function About() {
   return (
@@ -92,11 +93,34 @@ function About() {
         <h2 className="text-3xl font-bold text-center text-blue-700 mb-8">Meet Our Team</h2>
         <div className="grid md:grid-cols-3 gap-6 text-center">
           {[
-            { name: "Kamal Barman", role: "Team Leader" },
-            { name: "Rupak Ghosh", role: "Member" },
-            { name: "Shovan Goswami", role: "Member" },
-            { name: "Souvik Panda", role: "Member" },
-            { name: "Anirban Somadder", role: "Member" },
+            {
+              name: "Kamal Barman",
+              role: "Team Leader",
+              phone: "9002800162",
+              email: "kamalbarman900280@gmail.com",
+              linkedin: "https://www.linkedin.com/in/kamal-barman-75934530a/",
+            },
+            { name: "Rupak Ghosh",
+               role: "Member" ,
+              phone: "6297893183",
+              email: "rupakghosh10101@gmail.com",
+              linkedin: "https://www.linkedin.com/in/rupak-ghosh-9a0871294/",},
+            { name: "Shovan Goswami",
+               role: "Member" ,
+              phone: "8967075908",
+              email: "goswamishovan394@gmail.com",
+              linkedin: "https://www.linkedin.com/in/shovan-goswami-078668335/",},
+            { name: "Souvik Panda",
+               role: "Member",
+              phone: "+916295432687",
+              email: "souvikpanda@gmail.com",
+              linkedin: "https://www.linkedin.com/in/souvik-panda-2a54bb32b/", },
+            {
+              name: "Anirban Somadder",
+               role: "Member",
+              phone: "6291985475",
+              email: "anirbansamadder800@gmail.com",
+              linkedin: "https://www.linkedin.com/in/anirban-samadder-861722329/", },
           ].map((member, idx) => (
             <div
               key={idx}
@@ -104,7 +128,32 @@ function About() {
             >
               <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mx-auto mb-4"></div>
               <h3 className="font-bold text-lg">{member.name}</h3>
-              <p className="text-gray-600">{member.role}</p>
+              <p className="text-gray-600 mb-3">{member.role}</p>
+
+              {/* Show contact icons only for Team Leader */}
+              {member.phone && (
+                <div className="flex justify-center gap-4 mt-4">
+                  {/* Phone */}
+                  <a href={`tel:${member.phone}`} className="text-blue-600 hover:text-blue-800">
+                    <Phone size={22} />
+                  </a>
+
+                  {/* Email */}
+                  <a href={`mailto:${member.email}`} className="text-blue-600 hover:text-blue-800">
+                    <Mail size={22} />
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800"
+                  >
+                    <Linkedin size={22} />
+                  </a>
+                </div>
+              )}
             </div>
           ))}
         </div>

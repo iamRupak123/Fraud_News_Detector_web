@@ -47,8 +47,9 @@ def login():
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
-
+    print(username,password)
     user = users.find_one({"username": username})
+
     if not user:
         return jsonify({"message": "User not found"}), 404
 
