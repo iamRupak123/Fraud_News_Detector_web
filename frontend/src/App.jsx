@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home"
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import News from "./pages/News";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -30,6 +31,7 @@ function App() {
           />
         </Routes>
       </main>
+      <Footer/>
     </Router>
   );
 }

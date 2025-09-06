@@ -26,7 +26,7 @@ def register():
     email = data.get("email")
     password = data.get("password")
 
-    if users.find_one({"email": email}):
+    if users.find_one({"username": username}):
         return jsonify({"message": "User already exists"}), 400
 
     hashed_pw = bcrypt.generate_password_hash(password).decode("utf-8")
@@ -45,10 +45,10 @@ def register():
 @app.route("/api/login", methods=["POST"])
 def login():
     data = request.get_json()
-    email = data.get("email")
+    username = data.get("username")
     password = data.get("password")
 
-    user = users.find_one({"email": email})
+    user = users.find_one({"username": username})
     if not user:
         return jsonify({"message": "User not found"}), 404
 
