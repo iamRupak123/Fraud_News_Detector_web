@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <main className="p-6">
+      <main className="p-1 bg-gradient-to-r from-blue-400 to-indigo-600 h-full">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />

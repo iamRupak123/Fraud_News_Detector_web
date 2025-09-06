@@ -27,16 +27,16 @@ function Login({ setIsAuthenticated }) {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-400 to-teal-600">
-      <div className="bg-white shadow-lg p-8 rounded-lg w-full max-w-md">
+    <div className="flex justify-center items-center h-[87vh]   ">
+      <div className="bg-transparent border-2  shadow-lg p-8 rounded-lg w-full h-[55vh] max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-10">
           <input
             type="email"
             placeholder="Email"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full border p-2 rounded"
+            className="w-full border  p-2 rounded outline-none"
             required
           />
           <input
@@ -44,15 +44,25 @@ function Login({ setIsAuthenticated }) {
             placeholder="Password"
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
-            className="w-full border p-2 rounded"
+            className="w-full border outline-none p-2 rounded"
             required
           />
+          <div className=" flex items-center justify-between space-x-3">
           <button
             type="submit"
             className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700"
           >
             Login
           </button>
+            <button
+            type="button"
+            onClick={()=>{navigate("/register")}} 
+            className="w-full bg-blue-800 text-white p-2 rounded hover:bg-blue-900"
+          >
+            Register
+          </button>
+          </div>
+          
         </form>
       </div>
     </div>
