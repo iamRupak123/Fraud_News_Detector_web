@@ -15,14 +15,6 @@ function Navbar() {
     Home
     <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
   </Link>
-  <Link to="/register" className="relative group">
-    Register
-    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-  </Link>
-  <Link to="/login" className="relative group">
-    Login
-    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-  </Link>
   <Link to="/contact" className="relative group">
     Contact Us
     <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -31,6 +23,17 @@ function Navbar() {
     About Us
     <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
   </Link>
+  <div className=" flex justify-center items-center gap-3 bg-blue-400 px-6 py-2 mt-[-6px] rounded-2xl ">
+<Link to="/register" className="relative group ">
+    Register
+    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+  </Link>
+  <Link to="/login" className="relative group">
+    Login
+    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+  </Link>
+  </div>
+  
 </div>
 
     </nav>

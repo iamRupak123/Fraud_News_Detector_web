@@ -104,7 +104,7 @@ function About() {
                role: "Member" ,
               phone: "6297893183",
               email: "rupakghosh10101@gmail.com",
-              linkedin: "https://www.linkedin.com/in/rupak-ghosh-9a0871294/",},
+              linkedin: "https://www.linkedin.com/in/rupak-ghosh-ab4107339/",},
             { name: "Shovan Goswami",
                role: "Member" ,
               phone: "8967075908",
@@ -116,7 +116,7 @@ function About() {
               email: "souvikpanda@gmail.com",
               linkedin: "https://www.linkedin.com/in/souvik-panda-2a54bb32b/", },
             {
-              name: "Anirban Somadder",
+              name: "Anirban Samadder",
                role: "Member",
               phone: "6291985475",
               email: "anirbansamadder800@gmail.com",

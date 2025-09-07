@@ -7,16 +7,23 @@ from models import create_user, authenticate_user
 from pymongo import MongoClient
 from bson import ObjectId
 from flask_bcrypt import Bcrypt
-
-
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__) 
 CORS(app)
 bcrypt = Bcrypt(app)
+# Load environment variables from .env file
+load_dotenv()
+
+# Get MongoDB URI from .env
+mongo_uri = os.getenv("MONGO_URI")
 # ---- MongoDB Connection ----
-client = MongoClient("mongodb://localhost:27017/")  # Change if using MongoDB Atlas
-db = client["fake_news_db"]  # Database
-users = db["users"]  # Collection
+# client = MongoClient("mongodb://localhost:27017/")  # Change if using MongoDB Atlas
+client = MongoClient(mongo_uri)
+db = client["fake_news_db"]
+users = db["users"]
+
 
 # <-------------------Register verification--------------->
 @app.route("/api/register", methods=["POST"])
