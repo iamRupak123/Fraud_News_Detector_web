@@ -1,9 +1,0 @@
-flask
-flask-cors
-pymongo
-flask-bcrypt
-PyJWT
-nltk
-scikit-learn
-pickle-mixin
-python-dotenv
