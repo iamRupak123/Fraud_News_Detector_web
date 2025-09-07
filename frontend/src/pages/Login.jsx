@@ -27,8 +27,8 @@ function Login({ setIsAuthenticated }) {
   };
 
   return (
-    <div className="flex justify-center items-center h-[87vh]   ">
-      <div className="bg-white border-2  shadow-lg p-8 rounded-lg w-full h-[55vh] max-w-md">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-100 to-gray-200 px-4">
+      <div className="bg-white border shadow-lg p-6 sm:p-8 rounded-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-10">
           <input
