@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function Login({ setIsAuthenticated }) {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ username: "", password: "" });
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -27,16 +27,18 @@ function Login({ setIsAuthenticated }) {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-100 to-gray-200 px-4">
-      <div className="bg-white border shadow-lg p-6 sm:p-8 rounded-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-        <form onSubmit={handleSubmit} className="space-y-10">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-100 to-gray-200 px-4 sm:px-6 md:px-8">
+      <div className="bg-white border shadow-lg p-6 sm:p-8 md:p-10 rounded-lg w-full max-w-md">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-center">
+          Login
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <input
             type="text"
             placeholder="Username"
             value={form.username}
             onChange={(e) => setForm({ ...form, username: e.target.value })}
-            className="w-full border  p-2 rounded outline-none"
+            className="w-full border p-2 sm:p-3 rounded-lg text-sm sm:text-base outline-none focus:ring focus:ring-blue-400"
             required
           />
           <input
@@ -44,25 +46,24 @@ function Login({ setIsAuthenticated }) {
             placeholder="Password"
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
-            className="w-full border outline-none p-2 rounded"
+            className="w-full border p-2 sm:p-3 rounded-lg text-sm sm:text-base outline-none focus:ring focus:ring-blue-400"
             required
           />
-          <div className=" flex items-center justify-between space-x-3">
-          <button
-            type="submit"
-            className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700"
-          >
-            Login
-          </button>
+          <div className="flex flex-col sm:flex-row gap-3">
             <button
-            type="button"
-            onClick={()=>{navigate("/register")}} 
-            className="w-full bg-blue-800 text-white p-2 rounded hover:bg-blue-900"
-          >
-            Register
-          </button>
+              type="submit"
+              className="w-full sm:w-1/2 bg-green-600 text-white p-2 sm:p-3 rounded-lg hover:bg-green-700 transition"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate("/register")}
+              className="w-full sm:w-1/2 bg-blue-800 text-white p-2 sm:p-3 rounded-lg hover:bg-blue-900 transition"
+            >
+              Register
+            </button>
           </div>
-          
         </form>
       </div>
     </div>
