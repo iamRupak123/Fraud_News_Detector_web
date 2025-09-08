@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 import os
 
 app = Flask(__name__) 
-CORS(app)
+CORS(app,origins=["https://fraud-news-detector-web-2025.vercel.app/"])
 bcrypt = Bcrypt(app)
 # Load environment variables from .env file
 load_dotenv()
