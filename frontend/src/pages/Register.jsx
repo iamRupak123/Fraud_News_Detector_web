@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import API_URL from "../config";
-
+import API_BASE_URL from "../config";
 
 function Register() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
@@ -11,20 +10,25 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    const data = await res.json();
-    console.log("Response:", res.status, data); // 👈 Debugging
+      const data = await res.json();
+      console.log("Response:", res.status, data);
 
-    if (res.ok) {
-      toast.success("Registration successful! Please login.");
-      setTimeout(() => navigate("/login"), 1000); // 👈 Redirect after toast
-    } else {
-      toast.error(data.message || "Registration failed");
+      if (res.ok) {
+        toast.success("Registration successful! Please login.");
+        setTimeout(() => navigate("/login"), 1000);
+      } else {
+        toast.error(data.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Something went wrong. Please try again.");
     }
   };
 

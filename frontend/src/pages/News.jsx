@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import API_BASE_URL from "../config";
 
 function News() {
   const [news, setNews] = useState("");
@@ -9,7 +10,7 @@ function News() {
 
   useEffect(() => {
     const fetchTrustedNews = async () => {
-      const res = await fetch("http://127.0.0.1:5000/trusted-news");
+      const res = await fetch(`${API_BASE_URL}/trusted-news`);
       const data = await res.json();
       setTrustedNews(data.trusted_news || []);
     };
@@ -23,7 +24,7 @@ function News() {
     e.preventDefault();
     setLoading(true);
 
-    const response = await fetch("http://127.0.0.1:5000/predict", {
+    const response = await fetch(`${API_BASE_URL}/predict`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text: news }),
@@ -50,11 +51,8 @@ function News() {
         Fake News Detector 📰
       </h1>
 
-      {/* GRID LAYOUT */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-        {/* Left Side: Input + Result */}
         <div className="space-y-6">
-          {/* Input Form */}
           <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg">
             <form onSubmit={handleSubmit} className="space-y-4">
               <textarea
@@ -73,14 +71,12 @@ function News() {
             </form>
           </div>
 
-          {/* Result */}
           {loading && (
             <p className="text-blue-500 text-center">⏳ Checking news...</p>
           )}
 
           {result && !loading && (
             <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg">
-              {/* Horizontal results */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                 <div>
                   <p className="text-xs sm:text-sm md:text-sm text-gray-500">Prediction</p>
@@ -108,7 +104,6 @@ function News() {
                 </div>
               </div>
 
-              {/* Confidence Bar */}
               {result.confidence && (
                 <div className="mt-4">
                   <p className="text-xs sm:text-sm text-gray-600 mb-1">
@@ -125,36 +120,36 @@ function News() {
                 </div>
               )}
 
-              {/* Fact-check Articles */}
               {result.fact_check_articles && result.fact_check_articles.length > 0 && (
-  <div className="mt-6 text-left bg-gray-50 p-4 rounded-xl shadow-sm">
-    <p className="text-sm sm:text-base font-semibold mb-3">
-      Fact-Check References:
-    </p>
-    <ul className="space-y-2 max-h-64 overflow-y-auto">
-      {result.fact_check_articles.map((art, i) => (
-        <li key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2 last:border-b-0">
-          <a
-            href={art.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline break-words text-sm sm:text-base hover:text-blue-800"
-          >
-            {art.title}
-          </a>
-          <span className="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-0">({art.source})</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
+                <div className="mt-6 text-left bg-gray-50 p-4 rounded-xl shadow-sm">
+                  <p className="text-sm sm:text-base font-semibold mb-3">
+                    Fact-Check References:
+                  </p>
+                  <ul className="space-y-2 max-h-64 overflow-y-auto">
+                    {result.fact_check_articles.map((art, i) => (
+                      <li
+                        key={i}
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-2 last:border-b-0"
+                      >
+                        <a
+                          href={art.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline break-words text-sm sm:text-base hover:text-blue-800"
+                        >
+                          {art.title}
+                        </a>
+                        <span className="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-0">({art.source})</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
         </div>
 
-        {/* Right Side: Trusted News + History */}
         <div className="space-y-6">
-          {/* Trusted News */}
           <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg">
             <h2 className="text-lg sm:text-xl font-bold mb-4">Trusted News Sources ✅</h2>
             <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
@@ -174,7 +169,6 @@ function News() {
             </ul>
           </div>
 
-          {/* History */}
           <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg">
             <h2 className="text-lg sm:text-xl font-bold mb-4">History 🕑</h2>
             {history.length === 0 ? (

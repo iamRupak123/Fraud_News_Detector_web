@@ -1,3 +1,4 @@
-const API_URL = "https://fraud-news-main-398a736.kuberns.cloud";
+const API_BASE_URL = "https://fraud-news-detector-web-7.onrender.com";
 
-export default API_URL;
+export default API_BASE_URL;
+
