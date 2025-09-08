@@ -19,7 +19,7 @@ load_dotenv()
 # Get MongoDB URI from .env
 mongo_uri = os.getenv("MONGO_URI")
 # ---- MongoDB Connection ----
-# client = MongoClient("mongodb://localhost:27017/")  # Change if using MongoDB Atlas
+# client = MongoClient("mongodb://localhost:27017/")   
 client = MongoClient(mongo_uri)
 db = client["fake_news_db"]
 users = db["users"]
@@ -75,7 +75,7 @@ def login():
 
 # ---- NewsAPI function ----
 def verify_with_newsapi(query):
-    api_key = "0a5970c7d8a3474e8989b0df83ae0997"   # Replace with your API key
+    api_key = "0a5970c7d8a3474e8989b0df83ae0997"    
     # Use only first few words for better search
     keywords = " ".join(query.split()[:6])
     url = f"https://newsapi.org/v2/everything?q={keywords}&language=en&sortBy=relevancy&apiKey={api_key}"
@@ -84,9 +84,9 @@ def verify_with_newsapi(query):
         if response.status_code == 200:
             articles = response.json().get("articles", [])
             if articles:
-                # Return top 3 related sources
+                # Return top 5 related sources
                 results = []
-                for art in articles[:3]:
+                for art in articles[:5]:
                     results.append({
                         "source": art["source"]["name"],
                         "title": art["title"],
