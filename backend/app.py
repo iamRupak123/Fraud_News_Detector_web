@@ -76,7 +76,6 @@ def login():
 # ---- NewsAPI function ----
 def verify_with_newsapi(query):
     api_key = "0a5970c7d8a3474e8989b0df83ae0997"    
-    # Use only first few words for better search
     keywords = " ".join(query.split()[:6])
     url = f"https://newsapi.org/v2/everything?q={keywords}&language=en&sortBy=relevancy&apiKey={api_key}"
     try:
@@ -84,7 +83,6 @@ def verify_with_newsapi(query):
         if response.status_code == 200:
             articles = response.json().get("articles", [])
             if articles:
-                # Return top 5 related sources
                 results = []
                 for art in articles[:5]:
                     results.append({
