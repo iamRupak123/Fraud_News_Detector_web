@@ -16,8 +16,13 @@ function News() {
     };
     fetchTrustedNews();
 
-    const savedHistory = JSON.parse(localStorage.getItem("history") || "[]");
-    setHistory(savedHistory);
+    // const savedHistory = JSON.parse(localStorage.getItem("history") || "[]");
+    // setHistory(savedHistory);
+
+     const username = localStorage.getItem("username");
+    fetch(`${API_BASE_URL}/api/history/${username}`)
+    .then(res => res.json())
+    .then(data => setHistory(data));
   }, []);
 
   const handleSubmit = async (e) => {

@@ -3,27 +3,41 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import API_BASE_URL from "../config";
 
-function Login({ setIsAuthenticated }) {
+function Login({ setIsAuthenticated, setUsername }) {
   const [form, setForm] = useState({ username: "", password: "" });
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`${API_BASE_URL}/api/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (res.ok) {
-      toast.success("Login successful!");
-      setIsAuthenticated(true);
-      navigate("/detect");
-    } else {
-      toast.error(data.message || "Invalid credentials");
+      if (res.ok) {
+        toast.success("Login successful!");
+
+        // ✅ Save token + username in localStorage
+        localStorage.setItem("token", data.token || "logged_in");
+        localStorage.setItem("username", form.username);
+
+        // ✅ Update global state
+        setIsAuthenticated(true);
+        setUsername(form.username);
+
+        // ✅ Redirect to News page
+        navigate("/detect", { replace: true });
+      } else {
+        toast.error(data.message || "Invalid credentials");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      toast.error("Something went wrong. Please try again.");
     }
   };
 

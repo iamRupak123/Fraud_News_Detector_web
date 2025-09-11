@@ -72,6 +72,15 @@ def login():
     else:
         return jsonify({"message": "Invalid credentials"}), 401
 
+#-----------------search history -------------------->
+@app.route("/api/history/<username>", methods=["GET"])
+def get_history(username):
+    history = list(mongo.db.history.find({"username": username}).sort("createdAt", -1).limit(5))
+    for item in history:
+        item["_id"] = str(item["_id"])  # Convert ObjectId
+    return jsonify(history)
+
+
 
 # ---- NewsAPI function ----
 def verify_with_newsapi(query):

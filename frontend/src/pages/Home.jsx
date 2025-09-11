@@ -29,7 +29,7 @@ const Home = () => {
         onClick={() => navigate("/login")}
         className="bg-green-500 rounded-2xl py-3 px-6 sm:px-8 hover:bg-green-600 text-white font-semibold shadow-md transition duration-200 mb-10"
       >
-        Login to Start
+        Click here to Start
       </button>
 
       {/* Quick Demo Section */}
